@@ -1,0 +1,166 @@
+<html>
+
+<head>
+  <title>
+    project
+  </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="script/index.js"> </script>
+
+
+  <script>
+    // $(document).ready(function () {
+//       //save signup data
+//       $("#btn").click(function () {
+
+//         let obj = {
+//           type: "get",
+//           url: "/users-signup-process",
+//           data: {
+//             txtEmail: $("#txtEmail").val(),
+//             txtPwd: $("#txtPwd").val(),
+//             combo: $("#combo").val()
+//           }
+//         }
+//         $.ajax(obj).done(function (resp) {
+//           //$("#msgEmail").html(resp);
+//           alert(resp);
+//         }).fail(function (err) {
+//           alert("failed to connnect");
+//         })
+//       })
+
+// //save login data
+//       $("#btnlogin").click(function () {
+
+//         let obj = {
+//           type: "get",
+//           url: "/users-login-process",
+//           data: {
+//             txtEmaill: $("#txtEmaill").val(),
+//             txtPwdd: $("#txtPwdd").val()
+
+//           }
+//         }
+//         $.ajax(obj).done(function (resp) {
+//           alert(resp);
+
+//         }).fail(function (err) {
+//           alert("failed to connnect");
+//         })
+//       })
+
+  //  })
+
+
+  </script>
+</head>
+
+
+<body>
+  <center>
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupModal"
+      style="margin-top: 40px;">Signup</button>
+    <button type="button" class="btn btn-secondary" style="margin-left: 20px; margin-top: 40px;" data-bs-toggle="modal" data-bs-target="#ModalLogin"
+      style="margin-top: 20px;">Login</button> 
+    <a href="/openinfl">
+      <button type="button" class="btn btn-success" style="margin-top: 40px; margin-left: 20px;" id="btninfl">Influencer desh</button>
+    </a>
+    <a href="/open-admin-desh">
+      <button type="button" class="btn btn-info" style="margin-top: 40px; margin-left: 20px;" id="btnadmin">Admin desh</button>
+    </a>
+    <a href="/open-influ-finder">
+      <button type="button" class="btn btn-success" style="margin-top: 40px; margin-left: 20px;" id="btn-influ-finder">Influencer Finder</button>
+    </a>
+  </center>
+
+
+  <!-- Modal signup -->
+  <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">SIGNUP MODAL</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="txtEmail" name="txtEmail" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" placeholder="password" class="form-control" id="txtPwd" name="txtPwd">
+            </div>
+            <select id="combo" name="combo" class="form-select" aria-label="Default select example">
+              <option selected>select category</option>
+              <option value="Influencer">Influencer</option>
+              <option value="Client">Client</option>
+
+            </select>
+
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="btn">Signup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal login -->
+  <div class="modal fade" id="ModalLogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">LOGIN MODAL</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Email address</label>
+              <input type="email" placeholder="Email ID " class="form-control" id="txtEmaill" name="txtEmaill" aria-describedby="emailHelp">
+              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" placeholder="Password" class="form-control" id="txtPwdd" name="txtPwdd">
+            </div>
+
+            <div class="col-md-4">
+              <button type="button" class="btn btn-link btn-sm" id="forgotpwd">Forgot Password</button>
+            </div>
+
+            <div class="col-md-1">
+              <div class="spinner-border text-info spinner-border spinner-border-sm" role="status" id="spinnerforgotpwd"
+                style="display: none;">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="btnlogin">Login</button>
+            </div>
+
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

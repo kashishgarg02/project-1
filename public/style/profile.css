@@ -1,0 +1,17 @@
+#wait{
+    position: absolute;
+    width: 100px; height:100px;
+    background-image: url(/pics/Spinner-3.gif);
+    background-size: contain;
+    top: 30%;
+    left: 46%;
+   /* border: 1px black solid;*/
+    display: none;
+}
+#bg{
+    width: 100%;    height: 100%;  
+    background-color: gainsboro;
+    display: none;
+    position: absolute;
+    opacity: .5;
+}

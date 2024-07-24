@@ -1,0 +1,120 @@
+<html>
+
+<head>
+    <title>
+        events manager
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+
+    <script>
+        var module = angular.module("myModule", []);
+        var controller = module.controller("myController", function ($scope, $http) {
+
+            
+            // fetch events            
+            $scope.getAll = function () {
+                let emailid = localStorage.getItem("active");
+
+                let url = "/fetch-events?emailid=" + emailid;
+                $http.get(url).then(done, fail);
+
+                function done(response) {
+                    //alert(JSON.stringify(response.data)) ;
+                    $scope.jsonArrayAll = response.data;
+                }
+                function fail(err) {
+                    alert(err)
+                }
+            }
+
+            // for delete events
+            $scope.dodelete = function (rid) {
+                let url = "/del-event?rid=" + rid;
+                $http.get(url).then(done, fail);
+                function done(response) {
+                    $scope.getAll();
+                    alert(response.data);
+                    
+                }
+                function fail(err) {
+                    alert(err);
+                }
+            }
+        })
+    </script>
+</head>
+
+<body ng-app="myModule" ng-controller="myController" ng-init="getAll();" style="background-color: rgb(250, 224, 233);">
+
+     <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background-color: rgb(255, 255, 255);  padding: 5px;" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="pics/_082939e5-678e-4dc1-85fc-7afd2ae2a5b0.jpeg" alt="Logo" width="40" height="40"
+          style="margin-bottom: 10px;">
+        <font style="font-weight: 900; font-family: Jokerman; font-size: 30px; margin-bottom: 5px;">
+          KINECT
+        </font>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="nav nav-underline">
+          <li class="nav-item">
+            <a class="btn btn-dark" href="index.html" id="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <div class="container" >
+        <center >
+            <div style="margin-top: 65px;  color: rgb(23, 76, 133); font-weight: bolder; font-size: 48px; font-family: Double struck">
+                Events-Manager
+            </div> <br>
+            
+            <div class="container"> <br>
+                <table width="700" border="1" class="table">
+                    <tr>
+                        <th>Sr.No</th>
+                        
+                        <th>Event Name</th>
+                        <th>Date of Event</th>
+                        <th>Start Time</th>
+                        <th>City</th>
+                        <th>Venue</th>
+                        <th>Actions</th>
+                    </tr>
+                    <tr ng-repeat="obj in jsonArrayAll">
+                        <td>{{$index+1}}</td>
+                       
+                        <td> {{obj.ievents}}</td>
+                        <td>{{obj.doe}}</td>
+                        <td>{{obj.tos}}</td>
+                        <td>{{obj.cityy}}</td>
+                        <td>{{obj.venue}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger" ng-click="dodelete(obj.rid);">Delete</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+
+
+</body>
+
+</html>
